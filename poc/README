@@ -1,0 +1,9 @@
+Proof-of-concept.
+
+Usage:
+
+    $ ./poc.rb
+    > dm_id = dms.first.id
+    > download_file DM_ID
+    > send_file 'nilsding', 'wespe.png'
+
