@@ -1,19 +1,28 @@
 # Direct Message File Sharing (DMFS)
 
-Send files over Twitter direct messages
+Specification and Information for DMFS, a way to send all kinds of files over [Twitter](https://twitter.com) Direct Messages.
 
 ## Idea
 
 Since Twitter recently increased the direct message character limit to 10,000 we thought about sending small files with it.
 
-### Execution
+## How it works
 
-DMFS is using Twitter direct messages to send files to other users, which can receive the files if they also run the supplied client.
+Assuming there are 2 people (let's call them Alice and Bob) using [DMFS-clients](#available-clients). Alice wants to send Bob a small image (`test.png`) over DMFS.
 
-A DMFS-message is looking like this:
+1. Alice starts up the DMFS client and selects the file (in this case `test.png`) she wants to send to Bob.
+2. The DMFS client reads the filename and the content of the file (the bytestream)
+3. The bytestream will be encoded to Base64 and the [DMFS message](#message) will be assembled
+4. Alice sends the message with the DMFS client to Bob _(should happen automated if selected earlier)_
+5. Bob, also running a DMFS client, receives the message and his client accepts it, because of the valid format.
+6. The DMFS client decodes the bytestream from the message and writes it to the filename given in the message (`test.png`) on disk.
+
+### Specification
+
+#### Message
 
 ```
-!!DMFS{"fn":"file.png","pt":0,"ct":"iVBORw0KGgoAAAANSUhEUgAAAFAAAAAwCAYAAACG5f33AAAACXBIWXMAAA7D\nAAAOw..."}
+!!DMFS{"fn":"file.png","pt":0,"ct":"iVBORw0KGgoAAAANSUhEUgAAAFAAAAAwCAYA5f33AAAACXAAAOw..."}
 ```
 
 It consists of following parts:
@@ -32,14 +41,19 @@ If the client receives a valid DMFS message it will simply write the decoded con
 
 Currently, besides this being an idea, we also wrote a small Proof of Concept which you can find in [`poc/`](https://github.com/Nightbug/dmfs/tree/master/poc) in this repository, if you want to set it up, read the [README](https://github.com/Nightbug/dmfs/blob/master/poc/README) supplied with it.
 
-## Requirements
+## Contribute
 
- - Ruby 2.0.0+
- - Bundler
+### Protocol Specification
 
-## Install Gems
+If you have any ideas to improve this document or want to discuss about given things, open an [issue](https://github.com/Nightbug/dmfs/issues)!
 
-	$ bundle install
+### Clients
+
+If you wrote a client/plugin to use DMFS, tell us about it (using an issue/pull request) and we will add it to the list!
+
+#### Available Clients
+
+None yet :(
 
 ## License
 
