@@ -30,8 +30,10 @@ It consists of following parts:
 * **`!!DMFS`:** This identifies the direct message as DMFS message **(all other direct messages will be ignored)**
 * a JSON-object containing:
   * **`fn`:** the filename
-  * **`pt`:** the part ID of the file (if it is included, DMFS will look for followup DMs and merge the bytestreams together)
+  * **`pt`:** the part ID of the file (see notice below)
   * **`ct`:** the file content, basically just a bytestream converted to Base64 (we don't expect Twitter to allow raw bytes to be sent in DMs)
+
+**Notice about `pt`:** It needs to count backwards for it to work (this is the method that saves the most characters), so the first part of a four part file starts with `"pt": 4` the next part is 3, back to 1. If a file is not split in parts, `pt` will be 0.
 
 _Using `pt` the files can also be split, allowing a certainly bigger filesize, but much bigger isn't advised due to Twitter rate limits etc._
 
