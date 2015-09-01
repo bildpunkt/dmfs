@@ -33,7 +33,7 @@ It consists of following parts:
   * **`pt`:** the part ID of the file (see notice below)
   * **`ct`:** the file content, basically just a bytestream converted to Base64 (we don't expect Twitter to allow raw bytes to be sent in DMs)
 
-**Notice about `pt`:** It needs to count backwards for it to work (this is the method that saves the most characters), so the first part of a four part file starts with `"pt": 4` the next part is 3, back to 1. If a file is not split in parts, `pt` will be 0.
+**Notice about `pt`:** It needs to count backwards for it to work (this is the method that saves the most characters), so the first part of a four part file starts with `"pt": 4` the next part is 3, back to 0. If a file is not split in parts, `pt` will be 0. 0 is always the last part.
 
 _Using `pt` the files can also be split, allowing a certainly bigger filesize, but much bigger isn't advised due to Twitter rate limits etc._
 
