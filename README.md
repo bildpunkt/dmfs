@@ -22,7 +22,7 @@ Assuming there are 2 people (let's call them Alice and Bob) using [DMFS-clients]
 #### Message
 
 ```
-!!DMFS{"fn":"file.png","pt":0,"ct":"iVBORw0KGgoAAAANSUhEUgAAAFAAAAAwCAYA5f33AAAACXAAAOw..."}
+!!DMFS{"fn":"file.png","pt":0,"ct":"薉籎㸍㸚㐀䄀絉蝄㐀蔀㐀攀㨈㐀𠰀𨏥㓷㐀𒄉蹈㑳䈀㓃䈀㗃..."}
 ```
 
 It consists of following parts:
@@ -31,7 +31,9 @@ It consists of following parts:
 * a JSON-object containing:
   * **`fn`:** the filename
   * **`pt`:** the part ID of the file (see notice below)
-  * **`ct`:** the file content, basically just a bytestream converted to Base64 (we don't expect Twitter to allow raw bytes to be sent in DMs)
+  * **`ct`:** the file content, basically just a bytestream converted to Base65536 (we don't expect Twitter to allow raw bytes to be sent in DMs)
+
+**Notice about Base65536:** Considering the size of files we wanted to switch over to a even more powerful encoding and we found [Base65536](https://github.com/ferno/base65536). If you want to write a client in your favored programming language, be sure to also port this library (if it's not already existing).
 
 **Notice about `pt`:** It needs to count backwards for it to work (this is the method that saves the most characters), so the first part of a four part file starts with `"pt": 4` the next part is 3, back to 0. If a file is not split in parts, `pt` will be 0. 0 is always the last part.
 
@@ -55,7 +57,7 @@ If you wrote a client/plugin to use DMFS, tell us about it (using an issue/pull 
 
 #### Available Clients
 
-None yet :(
+* [Nightbug/dmfs-ruby](https://github.com/Nightbug/dmfs-ruby)
 
 ## License
 
