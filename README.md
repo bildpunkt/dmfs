@@ -59,6 +59,7 @@ If you wrote a client/plugin to use DMFS, tell us about it (using an issue/pull 
 
 * [Nightbug/dmfs-ruby](https://github.com/Nightbug/dmfs-ruby)
 * [stawberri/dmfs-browser](https://github.com/stawberri/dmfs-browser)
+* [Hiroyu/dmfs-python](https://github.com/Hiroyu/dmfs-python)
 
 ## License
 
