@@ -12,7 +12,7 @@ Assuming there are 2 people (let's call them Alice and Bob) using [DMFS-clients]
 
 1. Alice starts up the DMFS client and selects the file (in this case `test.png`) she wants to send to Bob.
 2. The DMFS client reads the filename and the content of the file (the bytestream)
-3. The bytestream will be encoded to Base64 and the [DMFS message](#message) will be assembled
+3. The bytestream will be encoded to Base64/65536 and the [DMFS message](#message) will be assembled
 4. Alice sends the message with the DMFS client to Bob _(should happen automated if selected earlier)_
 5. Bob, also running a DMFS client, receives the message and his client accepts it, because of the valid format.
 6. The DMFS client decodes the bytestream from the message and writes it to the filename given in the message (`test.png`) on disk.
@@ -58,6 +58,7 @@ If you wrote a client/plugin to use DMFS, tell us about it (using an issue/pull 
 #### Available Clients
 
 * [Nightbug/dmfs-ruby](https://github.com/Nightbug/dmfs-ruby)
+* [stawberri/dmfs-browser](https://github.com/stawberri/dmfs-browser)
 
 ## License
 
